@@ -1,50 +1,48 @@
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { useFonts } from 'expo-font';
-import UserAuth from './UserAuth';
+import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import { useFonts } from "expo-font";
+import UserAuth from "./pages/UserAuth";
+import Home from "./pages/Home";
+
+import ViewMech from "./pages/ViewMech";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
-    'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
   });
-
-  // getDocs(collection(db, "User")).then((result) => {
-  //   result.docs.map((res) => {
-  //     console.log(res.data())
-  //   })
-  // })
-
-  // const [user, setUser] = useState("");
-
-
-  // const getDocId = async () => {
-  //   const q = query(collection(db, "User"), where("username", "==", user));
-  //   const res = await getDocs(q)
-  //   res.docs.map((data) => {
-  //     console.log(data.id, data.data())
-  //   })
-  // }
 
   if (fontsLoaded)
     return (
-      <View style={styles.container}>
-        <UserAuth />
-        <StatusBar style="auto" />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="UserAuth" component={UserAuth} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="ViewMech" component={ViewMech} />
+        </Stack.Navigator>
+      </NavigationContainer>
     );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   btnStyle: {
     backgroundColor: "#cccccc",
-    padding: 5
-  }
+    padding: 5,
+  },
 });

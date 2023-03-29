@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import BlueButton from "../Components/BlueButton";
 import TextField from "../Components/TextField";
+
 import {
   collection,
   addDoc,
@@ -134,6 +135,11 @@ const UserAuth = () => {
               ? "Login if already registered"
               : "Register if not logged in"}
           </Text>
+        </TouchableOpacity>
+      }
+      {
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+          <Text>Test Button</Text>
         </TouchableOpacity>
       }
 

@@ -10,9 +10,11 @@ import {
 import { useFonts } from "expo-font";
 import UserAuth from "./pages/UserAuth";
 import Home from "./pages/Home";
-import HomeScreen from "./pages/HomeScreen";
+import EditProfile from "./pages/EditProfile";
+import Profile from "./pages/Profile";
 import DetailsScreen from "./pages/DetailsScreen";
 import SettingsScreen from "./pages/SettingsScreen";
+import ChangePassword from "./pages/ChangePassword";
 
 import ViewMech from "./pages/ViewMech";
 import { NavigationContainer } from "@react-navigation/native";
@@ -32,9 +34,11 @@ export default function App() {
           <Stack.Screen name="UserAuth" component={UserAuth} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ViewMech" component={ViewMech} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
           <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+          <Stack.Screen name="EditProfile" component={EditProfile} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
         </Stack.Navigator>
       </NavigationContainer>
     );

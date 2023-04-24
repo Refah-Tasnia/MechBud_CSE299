@@ -138,7 +138,7 @@ const UserAuth = () => {
         </TouchableOpacity>
       }
       {
-        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text>Test Button</Text>
         </TouchableOpacity>
       }

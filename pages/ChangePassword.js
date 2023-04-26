@@ -8,14 +8,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import EditProfile from "./EditProfile";
+
 const ChangePassword = () => {
   const navigation = useNavigation();
   const [currentPassword, setCurrentPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [repeatPassword, setRepeatPassword] = useState();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    //write update pass code
+
+    navigation.navigate("EditProfile");
+  };
 
   return (
     <View style={styles.container}>
@@ -52,10 +56,7 @@ const ChangePassword = () => {
           onChangeText={setRepeatPassword}
           secureTextEntry={true}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("EditProfile")}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Change password</Text>
         </TouchableOpacity>
       </View>

@@ -15,7 +15,7 @@ import Profile from "./Profile";
 import ViewRentCar from "./ViewRentCar";
 import ViewUser from "./ViewUser";
 
-export default Home = () => {
+export default AdminHome = () => {
   const navigation = useNavigation();
   const data = [
     {
@@ -35,17 +35,17 @@ export default Home = () => {
 
     {
       id: 6,
-      title: "Rent-a-car",
+      title: "View Rentable Cars",
       color: "#3D846C",
 
       image: "https://img.icons8.com/color/80/000000/taxi.png",
     },
     {
       id: 8,
-      title: "Locations",
+      title: "View Users",
       color: "#20B2AA",
 
-      image: "https://img.icons8.com/dusk/70/000000/globe-earth.png",
+      image: "https://img.icons8.com/dusk/70/000000/crowd.png",
     },
     {
       id: 9,
@@ -117,6 +117,21 @@ export default Home = () => {
                 style={[styles.card, { backgroundColor: item.color }]}
                 onPress={() => {
                   navigation.navigate(ViewRentCar);
+                }}
+              >
+                <View style={styles.cardHeader}>
+                  <Text style={styles.title}>{item.title}</Text>
+                </View>
+                <Image style={styles.cardImage} source={{ uri: item.image }} />
+                <View style={styles.cardFooter}></View>
+              </TouchableOpacity>
+            );
+          } else if (item.id == 8) {
+            return (
+              <TouchableOpacity
+                style={[styles.card, { backgroundColor: item.color }]}
+                onPress={() => {
+                  navigation.navigate(ViewUser);
                 }}
               >
                 <View style={styles.cardHeader}>

@@ -15,8 +15,11 @@ import Profile from "./pages/Profile";
 import DetailsScreen from "./pages/DetailsScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 import ChangePassword from "./pages/ChangePassword";
-
+import ViewRentCar from "./pages/ViewRentCar";
+import ViewUser from "./pages/ViewUser";
 import ViewMech from "./pages/ViewMech";
+import AdminHome from "./pages/AdminHome";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -39,6 +42,9 @@ export default function App() {
           <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
+          <Stack.Screen name="ViewUser" component={ViewUser} />
+          <Stack.Screen name="ViewRentCar" component={ViewRentCar} />
+          <Stack.Screen name="AdminHome" component={AdminHome} />
         </Stack.Navigator>
       </NavigationContainer>
     );

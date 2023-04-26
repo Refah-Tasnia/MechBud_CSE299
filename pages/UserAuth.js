@@ -52,29 +52,28 @@ const UserAuth = () => {
       if (NID.length < 17) {
         alert("Minimum number of digits should be 17");
       } else {
+        let mechId = Math.floor(Math.random() * 10000);
+
         const addData = await addDoc(collection(db, "Mechanic"), {
           firstName,
           lastName,
           email,
           password,
           NID,
+          mech_ID: mechId,
         });
         addData && alert("Registration Successful");
       }
-    } else if (
-      registerMode &&
-      email === "admin123@gmail.com" &&
-      password === "admin123"
-    ) {
-      <Text>Welcome Admin!</Text>;
     } else {
       const q = query(
         collection(db, "User"),
         where("email", "==", email),
         limit(1)
       );
+
       const response = await getDocs(q);
       const responseData = response?.docs[0]?.data();
+
       if (registerMode) {
         if (!response.empty) {
           const exists = responseData?.email === email;
@@ -91,7 +90,9 @@ const UserAuth = () => {
           addData && alert("Registration Successful");
         }
       } else {
-        if (!response.empty) {
+        if (email === "admin123@gmail.com" && password === "admin123") {
+          navigation.navigate("AdminHome");
+        } else if (!response.empty) {
           const userExist = responseData?.email === email;
           if (userExist) {
             if (responseData?.password === password) {

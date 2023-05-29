@@ -19,6 +19,8 @@ import ViewRentCar from "./pages/ViewRentCar";
 import ViewUser from "./pages/ViewUser";
 import ViewMech from "./pages/ViewMech";
 import AdminHome from "./pages/AdminHome";
+import Invoice from "./pages/Invoice";
+import RepairHistory from "./pages/RepairHistory";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -45,6 +47,8 @@ export default function App() {
           <Stack.Screen name="ViewUser" component={ViewUser} />
           <Stack.Screen name="ViewRentCar" component={ViewRentCar} />
           <Stack.Screen name="AdminHome" component={AdminHome} />
+          <Stack.Screen name="Invoice" component={Invoice} />
+          <Stack.Screen name="RepairHistory" component={RepairHistory} />
         </Stack.Navigator>
       </NavigationContainer>
     );

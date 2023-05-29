@@ -81,17 +81,32 @@ const UserAuth = () => {
             return alert("User already exists");
           }
         } else {
+          let userId = Math.floor(Math.random() * 10000);
           const addData = await addDoc(collection(db, "User"), {
             firstName,
             lastName,
             email,
             password,
+            user_ID: userId,
           });
           addData && alert("Registration Successful");
         }
       } else {
-        if (email === "admin123@gmail.com" && password === "admin123") {
-          navigation.navigate("AdminHome");
+        const q2 = query(
+          collection(db, "Admin"),
+          where("email", "==", email),
+          limit(1)
+        );
+        const response2 = await getDocs(q2);
+        const responseData2 = response2?.docs[0]?.data();
+
+        if (!response2.empty) {
+          const adminExist = responseData2?.email === email;
+          if (adminExist) {
+            if (responseData2?.password === password) {
+              navigation.navigate("AdminHome");
+            }
+          }
         } else if (!response.empty) {
           const userExist = responseData?.email === email;
           if (userExist) {
@@ -139,7 +154,7 @@ const UserAuth = () => {
         </TouchableOpacity>
       }
       {
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity onPress={() => navigation.navigate("ViewMech")}>
           <Text>Test Button</Text>
         </TouchableOpacity>
       }
